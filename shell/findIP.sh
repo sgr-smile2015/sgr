@@ -21,8 +21,8 @@ echo $java_flag
 IP=`ifconfig  |grep "inet addr:" |grep -v "127"|sed 's/^.*addr://g' |sed 's/Bcast.*$//g' |tr -d ' '`
 #IP=`ifconfig  |grep "inet addr:" |grep -v "127"|sed 's/^.*addr://g' |sed 's/Bcast.*$//g' |sed 's/[[:space:]]//g'`
 echo "${IP}-"
-#sed  's/10.224.1.154/`$IP`/g' config.txt
-sed  -i "s/10.224.1.164/$IP/g" config_TEST.xml
+#sed  's/1.22.1.154/`$IP`/g' config.txt
+sed  -i "s/1.22.1.1/$IP/g" config_TEST.xml
   else 
 echo "Java JDK is error!"
   fi
