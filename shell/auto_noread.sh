@@ -2,7 +2,7 @@
 # ------------------------------------------------
 # Filename:    auto.sh                           |
 # Date:        2015/06/18                        |
-# Email:       qihai.yang@gtja-trading.com               |
+# Email:       qihai.yang@gtja-trading.com       |
 # ------------------------------------------------
 # Copyright:   2015 (c) Sgr
 # License:     GPL
