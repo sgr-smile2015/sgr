@@ -1,0 +1,22 @@
+#! /bin/bash
+while :
+            do
+            clear
+            menu=`dialog --title "title"  --stdout --menu "MENU" 20 60 14 1 system 2 custom`
+            [ $? -eq 0 ] && echo "$menu" || exit         # 判断dialog执行,取消退出
+                while :
+                do
+                    case $menu in
+                    1)
+                        list="1a "item1" 2a "item2""     # 定义菜单列表变量
+                    ;;
+                    2)
+                        list="1b "item3" 2b "item4""
+                    ;;
+                    esac
+                    result=`dialog --title "title"  --stdout --menu "MENU" 20 60 14 $list`
+                    [ $? -eq 0 ] && echo "$result" || break    # 判断dialog执行,取消返回菜单,注意:配合上层菜单循环
+                    read
+                done
+            done
+        }
