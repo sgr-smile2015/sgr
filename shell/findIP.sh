@@ -27,4 +27,4 @@ sed  -i "s/1.22.1.1/$IP/g" config_TEST.xml
 echo "Java JDK is error!"
   fi
 
-rm  -f a # testing file
+rm  -f a 
