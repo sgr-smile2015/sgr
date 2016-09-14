@@ -1,3 +1,6 @@
 sudo apt-get install zsh
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 source .zshrc
+
+安装powerline
+
