@@ -1,0 +1,22 @@
+# D-I config version 2.0
+# search path for the c32 support libraries (libcom32, libutil etc.)
+path ubuntu-installer/amd64/boot-screens/
+#include ubuntu-installer/amd64/boot-screens/menu.cfg
+default ubuntu-installer/amd64/boot-screens/vesamenu.c32
+
+default linux
+#prompt 1
+timeout 6
+#display boot.msg
+
+############ boot from ubuntu  ##############################
+label linux
+  kernel vmlinuz
+#  kernel linux
+#  ipappend 2
+#  append initrd=initrd.gz ks=http://192.168.2.25/os/ks.cfg  ksdevice=enp0s25 ip=dhcp
+#  append ks=http://192.168.2.25/os/ks.cfg initrd=initrd.gz  ksdevice=enp0s25 ip=dhcp
+#  append ks=http://192.168.2.25/os/ks.cfg initrd=ubuntu-installer/amd64/initrd.gz live-installer/net-image=http://192.168.2.25/os/16/install/filesystem.squashfs ksdevice=eth0 ip=dhcp
+  append initrd=initrd.gz ks=http://192.168.2.25/os/ks.cfg live-installer/net-image=http://192.168.2.25/os/16/install/filesystem.squashfs clock-setup/ntp=false ksdevice=enp0s25 ip=dhcp
+ # append initrd=initrd.gz ks=http://192.168.2.25/os/ks.cfg live-installer/net-image=http://192.168.2.25/os/16/install/filesystem.squashfs clock-setup/ntp=false ksdevice=eth0 ip=dhcp
+##### Boot from local driver #################
