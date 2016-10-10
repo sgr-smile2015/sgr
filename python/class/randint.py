@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 from random import randint 
-num = randint(1,20)
+num = randint(1,2000)
 
 print 'guess number ?'
 
