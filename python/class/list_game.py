@@ -1,12 +1,11 @@
 #! /usr/bin/python
 
 from random import choice
-score_you = 0
-score_com = 0
+score = [0,0]
 direction = ['1','2','3']
 
-for i in range(3):
-    print '==Round %d - you kick! ==' % (i+1)
+def kick():
+    print '==Round  you kick! =='
     print 'choose one'
     print '1,2,3'
     you = input()
@@ -15,23 +14,37 @@ for i in range(3):
     print 'computer saved_.' + str(com)
     if you != com:
         print "Good"
-        score_you += 1
+        score[0] += 1
     else:
         print "Oo00..."
-    print 'score:%d(you) - %d(com)\n' %(score_you,score_com)  
+        score[1] += 1
+    print 'score:%d(you) - %d(com)\n' %(score[0],score[1])  
 
-    print '==Round %d - you saved! ==' % (i+1)
-    print 'choose one'
-    print '1,2,3'
-    you = input()
-    print 'you saved->' + str(you)
-    com = choice(direction)
-    print 'computer kicked_.' + str(com)
-    if you == com:
-        print "saved!"
+#    print '==Round - you saved! ==' 
+#    print 'choose one'
+#    print '1,2,3'
+#    you = input()
+#    print 'you saved->' + str(you)
+#    com = choice(direction)
+#    print 'computer kicked_.' + str(com)
+#    if you == com:
+#        print "saved!"
+#    else:
+#        print "Oo00..."
+#        score[1] += 1
+#    print 'score:%d(you) - %d(com)\n' %(score[0],score[1])  
+
+for i in range(3):
+    print '--- Round %d ---' %(i+1)
+    kick()
+
+while(score[0] == score[1]):
+    i += 1
+    kick()
+
+    if score[0] > score[1]:
+        print 'you win!'
     else:
-        print "Oo00..."
-        score_com += 1
-    print 'score:%d(you) - %d(com)\n' %(score_you,score_com)  
+        print 'you lose.'
 
 
