@@ -14,3 +14,16 @@ print list[3]
 
 list.append(234)
 print list[-1]
+
+from random import choice
+print 'choose one you shoot:'
+print '1,2,3'    
+you = input()
+print 'you kicked->' + str(you)
+direction = ['1','2','3']
+com = int (choice(direction))
+print 'computer saved->' + str(com)
+if you != com:
+    print 'Goal!!'
+else:
+    print 'Oops...'
