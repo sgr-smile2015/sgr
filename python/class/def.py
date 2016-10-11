@@ -7,10 +7,10 @@ def equal(num1,num2):
     if num1 < num2:
         print 'too small'
         return False;
-    if num1 > num2:
+    elif num1 > num2:
         print 'too big ^_^'
         return False;
-    if num1 == num2:
+    else:
         print 'bingo !!'
         return True
 
