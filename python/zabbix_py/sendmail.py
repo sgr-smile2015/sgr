@@ -47,4 +47,4 @@ to_list = [
   
 with    open('/tmp/sendmail_qs.log','ab') as f:
         f.write('%s  Receive address:  %s Title: %s \n'%(current_time,sys.argv[1],title))
-send_email( cont, to_list,title)
+send_email(cont, to_list,title)
