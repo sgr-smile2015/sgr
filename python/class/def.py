@@ -14,7 +14,6 @@ def equal(num1,num2):
         print 'bingo !!'
         return True
 
-
 print 'guess numbers "?"'
 bingo = False
 while bingo == False:
