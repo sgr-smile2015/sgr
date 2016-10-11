@@ -1,6 +1,6 @@
 #! /usr/bin/python
 
-def hello():
-    print 'say hello'
+def hello(someone):
+    print someone + ' say hello'
 
-hello()
+hello('tom')
