@@ -4,6 +4,7 @@
 import urllib2
 import json
 from city import city
+#from a import city
 cityname = raw_input('city name ?\n')
 citycode = city.get(cityname)
 if citycode:
