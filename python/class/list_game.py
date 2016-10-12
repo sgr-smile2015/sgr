@@ -2,7 +2,7 @@
 
 from random import choice
 score = [0,0]
-direction = ['1','2','3']
+direction = [1,2,3]
 
 def kick():
     print '==Round  you kick! =='
@@ -38,9 +38,9 @@ for i in range(3):
     print '--- Round %d ---' %(i+1)
     kick()
 
-while(score[0] == score[1]):
-    i += 1
-    kick()
+#while(score[0] == score[1]):
+#    i += 1
+#    kick()
 
     if score[0] > score[1]:
         print 'you win!'
