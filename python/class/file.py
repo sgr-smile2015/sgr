@@ -7,4 +7,9 @@ print data
 #print data1
 f.close()
 
+string = 'i am begin write to file ^_^\n'
+out = open('out.txt', 'w')
+out.write(data)
+out.close()
+
 
