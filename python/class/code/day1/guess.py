@@ -29,7 +29,6 @@ else:
 print '%s , play time %d s, min time %d s, avg time %0.2f s' \
 % (name,game_time,min_time,avg_time) 
 
-
 times = 0
 print 'guess number ?'
 
