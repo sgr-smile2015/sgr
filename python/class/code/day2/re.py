@@ -7,7 +7,7 @@ text = 'site sea sue sweet see case sse ssee loses'
 #m = re.findall(r"\bs.*?e\b",text)
 #m = re.findall(r"[Hh]i*",text)
 #m = re.findall(r"\bi\b",text)
-m = re.findall(r"\b.*\b",text)
+m = re.findall(r"\b.*\S\b",text)
 
 if m:
     print m
