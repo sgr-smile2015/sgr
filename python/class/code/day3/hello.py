@@ -3,7 +3,7 @@ import pygame
 from sys import exit
 pygame.init()
 
-screen = pygame.display.set_mode((600, 570), 0, 32)
+screen = pygame.display.set_mode((400, 570), 0, 32)
 pygame.display.set_caption("Hello,World!")
 
 background = pygame.image.load('bg.jpg').convert()
