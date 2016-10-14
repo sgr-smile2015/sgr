@@ -1,6 +1,6 @@
 # -*-coding:utf-8-*-
 import pygame
-#from sys import exit
+from sys import exit
 pygame.init()
 
 screen = pygame.display.set_mode((600, 570), 0, 32)
