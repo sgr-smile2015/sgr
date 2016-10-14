@@ -6,7 +6,7 @@ from sys import exit
 pygame.init()
 
 screen = pygame.display.set_mode((350, 350), 0, 32)
-pygame.display.set_caption("Hello,World!")
+pygame.display.set_caption("Hello,Game!")
 
 background = pygame.image.load('bg.jpg').convert()
 while True:
