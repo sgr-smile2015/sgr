@@ -1,3 +1,4 @@
+#! /usr/bin/python
 # -*-coding:utf-8-*-
 
 import pygame
@@ -75,7 +76,7 @@ pygame.display.set_caption("Fu*ko,Game!")
 background = pygame.image.load('bg.jpg').convert()
 
 bullet = [] 
-for i in range(4):
+for i in range(3):
     bullet.append(Bullet())
 count_b = len(bullet)
 index_b = 0 
@@ -90,6 +91,8 @@ plane = Plane()
 
 score = 0
 gameover = False
+font = pygame.font.Font(None,32)
+
 while True:
     for event in pygame.event.get():
 #        if event.type == pygame.MOUSEBUTTONDOWN:
@@ -97,6 +100,16 @@ while True:
         if event.type==pygame.QUIT:
             pygame.quit()
             exit()
+
+        if gameover and event.type == pygame.MOUSEBUTTONUP:
+            plane.restart()
+            for e in enemy:
+                e.restart()
+            for b in bullet:
+                b.active = False
+            score = 0
+            gameover = False
+
     screen.blit(background,(0,0))
 
     interval_b -= 1
@@ -113,9 +126,13 @@ while True:
             screen.blit(b.image,(b.x, b.y))
     
     for e in enemy: 
+        if checkcrash(e,plane):
+            gameover = True
         e.move()
         screen.blit(e.image,(e.x, e.y))
 
     plane.move()
     screen.blit(plane.image,(plane.x,plane.y))
+    text = font.render("score: %d" % score, True,(0,0,0))
+    screen.blit(text,(0,0))
     pygame.display.update()
