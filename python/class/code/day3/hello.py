@@ -70,7 +70,7 @@ def checkcrash(e,p):
 
 pygame.init()
 
-screen = pygame.display.set_mode((320, 420), 0, 32)
+screen = pygame.display.set_mode((450, 800), 0, 32)
 pygame.display.set_caption("Fu*ko,Game!")
 
 background = pygame.image.load('bg.jpg').convert()
@@ -112,27 +112,32 @@ while True:
 
     screen.blit(background,(0,0))
 
-    interval_b -= 1
-    if interval_b < 0:
-        bullet[index_b].restart()
-        interval_b = 100
-        index_b = (index_b + 1) % count_b
-    for b in bullet:
-        if b.active:
-            for e in enemy:
-                if checkhit(e,b):
-                    score += 10
-            b.move()
-            screen.blit(b.image,(b.x, b.y))
+    if not gameover:
+        interval_b -= 1
+        if interval_b < 0:
+            bullet[index_b].restart()
+            interval_b = 100
+            index_b = (index_b + 1) % count_b
+        for b in bullet:
+            if b.active:
+                for e in enemy:
+                    if checkhit(e,b):
+                        score += 10
+                b.move()
+                screen.blit(b.image,(b.x, b.y))
     
-    for e in enemy: 
-        if checkcrash(e,plane):
-            gameover = True
-        e.move()
-        screen.blit(e.image,(e.x, e.y))
+        for e in enemy: 
+            if checkcrash(e,plane):
+                gameover = True
+            e.move()
+            screen.blit(e.image,(e.x, e.y))
 
-    plane.move()
-    screen.blit(plane.image,(plane.x,plane.y))
-    text = font.render("score: %d" % score, True,(0,0,0))
-    screen.blit(text,(0,0))
+        plane.move()
+        screen.blit(plane.image,(plane.x,plane.y))
+        text = font.render("score: %d" % score, True,(0,0,0))
+        screen.blit(text,(0,0))
+    else:
+        text = font.render("score->: %d " % score, 1,(0,0,0))
+        screen.blit(text,(190,400))
+
     pygame.display.update()
