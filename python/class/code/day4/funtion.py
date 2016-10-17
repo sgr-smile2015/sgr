@@ -11,3 +11,6 @@ div1(5.,2)
 
 div2(5,2)
 div2(5.,2.)
+
+list = ['a','r','c','d','e']
+print list[10:]
