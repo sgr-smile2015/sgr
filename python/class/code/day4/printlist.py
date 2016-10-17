@@ -12,6 +12,8 @@ print "list1 = %s" % list1
 print "list2 = %s" % list2
 print "list3 = %s" % list3
 
+print "\n" 
+
 # output list1[10] list2[12] list3[a]
 
 def ext(val, list=None):
