@@ -2,7 +2,7 @@
 
 touch /home/gitwork/python/file
 git add /home/gitwork/python/file  
-git commit - m 'testing file to system'
+git commit -m 'testing file to system'
 git push 
 
 sleep 5 
