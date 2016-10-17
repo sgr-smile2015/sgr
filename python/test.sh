@@ -1,14 +1,14 @@
 #! /bin/bash
 
 touch file
-git add file > /tmp/mygit.log 2>&1 &
-git commit -m 'testing file to system' > /tmp/mygit.log 2>&1 &
-git push > /tmp/mygit.log 2>&1 &
+git add file  
+git commit - m 'testing file to system'
+git push 
 
 sleep 5 
 
-git rm file > /tmp/mygit.log 2>&1 &
-git commit -m 'testing file to system' > /tmp/mygit.log 2>&1 &
+git rm file 
+git commit -m 'testing file to system' 
 
 
 
