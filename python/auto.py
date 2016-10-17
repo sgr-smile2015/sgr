@@ -17,5 +17,5 @@ print cmd
 
 os.system('touch testfile')
 os.system('git add testfile')
-ll = os.system(cmd)
-print ll
+os.system(cmd)
+os.system('git push')
