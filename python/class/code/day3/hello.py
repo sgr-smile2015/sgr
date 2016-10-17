@@ -3,7 +3,7 @@
 
 import pygame
 from sys import exit
-#from random import *
+from random import *
 
 class Bullet:
     def __init__(self):
