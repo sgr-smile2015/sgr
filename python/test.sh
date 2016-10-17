@@ -1,6 +1,6 @@
 #! /bin/bash
 
-touch file
+touch /home/gitwork/python/file
 git add file  
 git commit - m 'testing file to system'
 git push 
