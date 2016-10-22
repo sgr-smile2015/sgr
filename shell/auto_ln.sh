@@ -42,6 +42,7 @@ if [ ${FLAG} = 'war' ]
     fi
 
 #LA_FILE=`find  test/ -type f -mmin -2 |awk -F / '{print $2}'` 
+
 #LA_FILE=`ls -t release/*.war | head -1`
 LA_FILE=`find  release/ -type f -mmin -30`
 
