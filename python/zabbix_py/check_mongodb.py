@@ -34,7 +34,7 @@ def check_process_port():
 		print "0"
   
 def check_mongodb_connect():
-	process_num=commands.getstatusoutput("mongostat -h 192.168.1.82 -u ipin -p xxoo --authenticationDatabase admin -n 1 | awk '{ if($16~/^([0-9])+$/) {print $16}}'")
+	process_num=commands.getstatusoutput("mongostat -h 192.168.3.32 -u ipin -p xxoo --authenticationDatabase admin -n 1 | awk '{ if($16~/^([0-9])+$/) {print $16}}'")
 	print process_num
 	if int(process_num[1]) >=1:
 		print process_num
