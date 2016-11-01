@@ -1,0 +1,34 @@
+**ubuntu16.04安装本地私有云owncloud服务器**
+
+1.安装httpd服务，对外提供web服务
+sudo apt-get install apache2
+
+2.安装数据库服务，这里选择MySQL(5.7版本)
+sudo apt-get update
+sudo apt-get install mysql-server
+
+(安装MySQL失败，提示mysql-common错误)
+====
+dpkg: 处理软件包 mysql-common (--configure)时出错：
+ 子进程 已安装 post-installation 脚本 返回错误状态 2
+===
+
+解决办法：
+wget http://dev.mysql.com/get/mysql-apt-config_0.7.3-1_all.deb
+sudo dpkg -i mysql-apt-config_0.7.3-1_all.deb
+sudo apt-get update 
+sudo apt-get install mysql-server
+
+
+3.安装php7.0
+查看php加载情况
+php -r "phpinfo();" |grep Load
+
+PHP测试页面脚步如下：
+<?php
+phpinfo();
+?>
+
+参考
+1. http://www.linuxdiyf.com/linux/21530.html
+2. https://linux.cn/article-2494-1.html
