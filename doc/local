@@ -1,0 +1,7 @@
+Ubuntu在命令行显示中文乱码（一大堆的????）
+
+解决办法如下：
+1.添加中文字符集 
+sudo locale-gen zh_CN.UTF-8
+如果在/var/lib/locales/supported.d/local 
+文件中多了一行 zh_CN.UTF-8表示成功
