@@ -5,3 +5,7 @@ Ubuntu在命令行显示中文乱码（一大堆的????）
 sudo locale-gen zh_CN.UTF-8
 如果在/var/lib/locales/supported.d/local 
 文件中多了一行 zh_CN.UTF-8表示成功
+
+远程登录服务器，重启网络后不断连接的方法
+在screen 中输入一下命令： 
+sudo /sbin/ifdown enp0s25 && sudo /sbin/ifup enp0s25 ;echo done
