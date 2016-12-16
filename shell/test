@@ -1,0 +1,13 @@
+#!/bin/bash
+#脚本功能是有sudo 权限的用，自动创建文件名相同的用户
+#并添加key公钥到指定目录
+
+sudo useradd -m -s /bin/bash $0
+sudo mkdir /home/$0/.ssh
+
+sudo touch /home/$0/.ssh/authorized_keys
+
+sudo echo "ssh-rsa tttt" | sudo tee -a /home/$0/.ssh/authorized_keys
+sudo chmod 600 /home/$0/.ssh/authorized_keys
+sudo chmod 700 /home/$0/.ssh
+sudo chown -R $0.$0 /home/$0/.ssh
