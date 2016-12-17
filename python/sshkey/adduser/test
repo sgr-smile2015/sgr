@@ -5,7 +5,7 @@ sudo mkdir /home/$0/.ssh
 
 sudo touch /home/$0/.ssh/authorized_keys
 
-sudo echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvPiFv7Duh5qFgXs13Su98HRO21CcnXn+ixTvoyEOblZ+131rXlxAMOnZgca+HKXkvpAtr6aZuPvxLroFJCBiKQaMb3elhWi/M1sYryKKnpk03Ev2j8kevwMAoyoQLVjnOUxAAzY07CTsfNfDtVF7GdWgK9ggIZaJuWwNQWE3BUNVVDtepFkJIFRVdfOpqs6pGFd15jgTet1oTDbdZaHruJxPF3/+a/7uHHkCk+eS+LiuUagnNqH6yKowgdWQ72pt/BPUhDlSjFl/F8WWpxmKpfhDwbpng57ePTdGGNXlxmYAdiWW4/abpL+YuRnR3r/t7irY1WGsP9BMT8xnC3DrF sgr@sgr-ThinkPad" | sudo tee -a /home/$0/.ssh/authorized_keys
+sudo echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC125WoxXphvlIdp7m2nc7H/ShBErgZ0RxFmz8JSJGzJQ1xjQ8Y0h4K6ZqOdI1lpnTiURedcaaxSD8ynKQqQQwJmgSTjm85/gf9Xk26LYcSqyPz3n9WqGl+95ClmyAIbH7oYBNQ7BTlku7o90GargXyDB8YIOZjWpv9FrOjXndjsWHSYhC7zGyNK1xejHwiU8gisuQZG5nv8sJsO3UfCOgCh2x5UF/dIHPlTWEpTNfPlg/+ALZbjAqqAMsiV8/4bQ4tR7zSscNJWo3vXreJrsAGXBKo50zd4O7Zxr3ZN+wTj5E8sy56F+1Hqenu8IHO1rAYR0Peg5ME8CBkLhp5c3zX sgr@sgr-S" | sudo tee -a /home/$0/.ssh/authorized_keys
 sudo chmod 600 /home/$0/.ssh/authorized_keys
 sudo chmod 700 /home/$0/.ssh
 sudo chown -R $0.$0 /home/$0/.ssh
