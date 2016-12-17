@@ -1,0 +1,11 @@
+#!/bin/bash
+
+sudo useradd -m -s /bin/bash $0
+sudo mkdir /home/$0/.ssh
+
+sudo touch /home/$0/.ssh/authorized_keys
+
+sudo echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvPiFv7Duh5qFgXs13Su98HRO21CcnXn+ixTvoyEOblZ+131rXlxAMOnZgca+HKXkvpAtr6aZuPvxLroFJCBiKQaMb3elhWi/M1sYryKKnpk03Ev2j8kevwMAoyoQLVjnOUxAAzY07CTsfNfDtVF7GdWgK9ggIZaJuWwNQWE3BUNVVDtepFkJIFRVdfOpqs6pGFd15jgTet1oTDbdZaHruJxPF3/+a/7uHHkCk+eS+LiuUagnNqH6yKowgdWQ72pt/BPUhDlSjFl/F8WWpxmKpfhDwbpng57ePTdGGNXlxmYAdiWW4/abpL+YuRnR3r/t7irY1WGsP9BMT8xnC3DrF sgr@sgr-ThinkPad" | sudo tee -a /home/$0/.ssh/authorized_keys
+sudo chmod 600 /home/$0/.ssh/authorized_keys
+sudo chmod 700 /home/$0/.ssh
+sudo chown -R $0.$0 /home/$0/.ssh

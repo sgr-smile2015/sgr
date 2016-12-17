@@ -1,0 +1,19 @@
+---
+- hosts: lol
+  gather_facts: no
+  user: ipin
+  sudo: True
+  vars: 
+    var_name: test
+  tasks:
+    - name: copy to clinet host 
+      copy: src=./{{ var_name }} dest=/tmp/{{ var_name }}  owner=ipin group=ipin  mode=755
+
+    - name: exclue scripts
+      shell: cd /tmp/ && sh {{ var_name }} 
+
+    - name: delete scripts
+      shell: cd /tmp/ && rm {{ var_name }} 
+
+    - name: add sudo Permission
+      shell: sudo echo '{{ var_name }}     ALL=NOPASSWD:ALL' | sudo tee -a /etc/sudoers 
