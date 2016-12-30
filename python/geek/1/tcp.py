@@ -12,8 +12,9 @@ def retBanner(ip,port):
     except:
         return
 
+#def check(banner,filename):
+#    f.filename.readlines()
 def check(banner):
-    pass
     if 'Ubuntu-2ubuntu2.8' in banner:
         print "[*] is OK"
     elif 'Ubunt' in banner:
