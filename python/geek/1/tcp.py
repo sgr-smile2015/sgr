@@ -2,12 +2,17 @@
 
 import socket
 
-socket.setdefaulttimeout(3)
+def retBanner(ip,port):
+    try:
+        socket.setdefaulttimeout(3)
+        s = socket.socket()
+        s.connect((ip,port))
+        banner = s.recv(1024)
+        return banner
+    except:
+        return
+def main():
+    print retBanner("192.168.1.46",22)
 
-s = socket.socket()
-try:    
-    s.connect(("192.168.1.46",21))
-except Exception,e:
-    print "[-] Error = " +str(e)
-ans = s.recv(1024)
-print ans
+if __name__=='__main__':
+    main()
