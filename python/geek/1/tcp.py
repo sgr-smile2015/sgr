@@ -11,8 +11,20 @@ def retBanner(ip,port):
         return banner
     except:
         return
+
+def check(banner):
+    pass
+    if 'Ubuntu-2ubuntu2.8' in banner:
+        print "[*] is OK"
+    elif 'Ubunt' in banner:
+        print "[-] is NO"
+    else:
+        return
+
+
 def main():
-    print retBanner("192.168.1.46",22)
+    host=retBanner("192.168.1.46",22)
+    check(host)
 
 if __name__=='__main__':
     main()
