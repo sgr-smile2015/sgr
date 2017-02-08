@@ -17,14 +17,14 @@ def retBanner(ip,port):
 def check(banner):
     if 'Ubuntu-2ubuntu2.8' in banner:
         print "[*] is OK"
-    elif 'Ubunt' in banner:
-        print "[-] is NO"
+    elif 'SSH-2.0-OpenSSH_6.1p1 Debian-4' in banner:
+        print "[-] is Ok"
     else:
         return
 
 
 def main():
-    host=retBanner("192.168.1.46",22)
+    host=retBanner("192.168.1.50",22)
     check(host)
 
 if __name__=='__main__':
