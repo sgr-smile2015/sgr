@@ -12,7 +12,6 @@ source /etc/profile
 }
 
 #invok_tar
-
 JDK_V=`java -version > a 2>&1` 
 java_flag=`awk '{print $1}' a` 
 java_flag=`echo ${java_flag} | awk '{print $1}'` 
