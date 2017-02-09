@@ -11,6 +11,7 @@ echo 'export JAVA_HOME CLASSPATH PATH' >> /etc/profile
 source /etc/profile
 }
 
+
 #invok_tar
 JDK_V=`java -version > a 2>&1` 
 java_flag=`awk '{print $1}' a` 
