@@ -1,0 +1,26 @@
+---
+- hosts: ai74
+  gather_facts: no
+  user: ipin
+  sudo: True
+  vars: 
+    package: ./zabbix-agent_3.0.0-1+trusty_amd64.deb 
+    var_sh: set.sh
+  tasks:
+    - name: copy package to clinet  
+      copy: src=./{{ package }} dest=/tmp/{{ package }}  owner=ipin  mode=755
+
+    - name: copy to clinet host 
+      copy: src=./{{ var_sh }} dest=/tmp/{{ var_sh }}  owner=ipin  mode=755
+
+    - name: exclue scripts
+      shell: cd /tmp/ && sh {{ var_sh }} 
+
+    - name: delete scripts
+      shell: cd /tmp/ && rm {{ package }} 
+
+    - name: delete scripts
+      shell: cd /tmp/ && rm {{ var_sh }} 
+
+#    - name: add sudo Permission
+#      shell: sudo echo '{{ var_sh }}     ALL=NOPASSWD:ALL' | sudo tee -a /etc/sudoers 
