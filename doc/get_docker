@@ -1,0 +1,22 @@
+ubuntu14.04安装docker
+
+1.升级内核
+sudo apt-get install -y --install-recommends linux-generic-lts-xenial
+
+2.添加相关依赖软件
+sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates
+
+3.添加GPG秘钥(失败)
+sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+
+4.添加源(失败)
+echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" | sudo tee /etc/apt/sources.list.d/docker.list
+
+5.使用脚本下载(成功)
+sudo apt-get update 
+sudo apt-get install wget
+wget -qO- https://get.docker.com/ | sh 
+
+6.使用国内源
+echo "DOCKER_OPTS=\"\$DOCKER_OPTS --registry-mirror=http://f2d6cb40.m.daocloud.io\"" | sudo tee -a /etc/default/docker
