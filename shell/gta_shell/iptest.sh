@@ -2,7 +2,7 @@
 #testing locat network alive system
 
 fun(){
-for i in {100..200}
+for i in {10..100}
 do
     host=192.168.1.$i
     #Flag=`ping -c2 $host | sed -n '2p' | awk '{ print $1}'`
