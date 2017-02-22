@@ -9,3 +9,10 @@ sudo locale-gen zh_CN.UTF-8
 远程登录服务器，重启网络后不断连接的方法
 在screen 中输入一下命令： 
 sudo /sbin/ifdown enp0s25 && sudo /sbin/ifup enp0s25 ;echo done
+
+ubuntu16.04server版本更新内核后出现以下错误：
+
+bnx2: Can't load firmware file "bnx2/bnx2-mips-09-6.2.1b.fw"
+解决方案：
+cd /lib/firmware/4.4.0-64-generic/bnx2
+cp bnx2-mips-09-6.2.1a.fw bnx2-mips-09-6.2.1b.fw
