@@ -1,0 +1,39 @@
+该目录下文件都为zabbix监控内网环境初始环境备份
+
+1.zabbix3.0.tar 为zabbix前端环境的docker镜像
+导入镜像命令: docker load -i /data/docker_images/20170224/zabbix3.0.tar
+使用docker images 查看得到如下结果
+REPOSITORY    TAG       IMAGE ID        CREATED             VIRTUAL SIZE
+zabbix-3.0    backup    d76a072a7a56    About an hour ago   804.9 MB
+
+2.zabbix-db-back.tar 为zabbix数据库环境的docker镜像
+导入镜像命令: docker load -i /data/docker_images/20170224/zabbix-db-back.tar
+
+3.导入以上两个镜像后，首先启动一个数据库docker容器
+命令: docker run -d \
+--name zabbix-db \
+--env="MARIADB_USER=zabbix" \
+--env="MARIADB_PASS=rzn0Xums" \
+zabbix-db:backup
+然后进入容器创建一个名为: zabbix的数据库
+
+4.zabbix_db.sql 为内网环境的数据库备份。
+导入数据到数据库容器内(当前目录内)
+docker exec -i zabbix-db mysql -uzabbix -przn0Xums zabbix < zabbix_db.sql
+
+5.启动zabbix前端docker容器
+docker run \
+-d \
+--name zabbix-server \
+-p 8888:80 \
+-p 10051:10051 \
+--link zabbix-db:zabbix.db \
+--env="ZS_DBHost=zabbix.db" \
+--env="ZS_DBUser=zabbix" \
+--env="ZS_DBPassword=rzn0Xums" \
+zabbix-3.0:backup
+
+6.docker ps 查看运行的docker容器，
+访问部署机器的http://youip:8888
+用户：ipin
+密码：hello_ipin
