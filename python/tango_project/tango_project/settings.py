@@ -15,6 +15,11 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+#add templates dir
+TEMPLATE_PATH = os.path.join(BASE_DIR,'templates')
+
+#add static dir
+STATIC_PATH = os.path.join(BASE_DIR,'static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -23,8 +28,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'a-%-6yot$%(80)brszpx9o$#t*29(990a7mysvlli0d-1zl9m$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+#DEBUG = False
 DEBUG = True
 
+#ALLOWED_HOSTS = ['0.0.0.0/24']
 ALLOWED_HOSTS = []
 
 
@@ -37,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rango'
 ]
 
 MIDDLEWARE = [
@@ -66,6 +75,14 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_DIRS = [
+        TEMPLATE_PATH,
+        ]
+
+STATICFILES_DIRS = (
+        STATIC_PATH,
+        )
 
 WSGI_APPLICATION = 'tango_project.wsgi.application'
 
