@@ -7,8 +7,16 @@
 	</head>
 
 	<body>
-		<h1>Rango Helo ...<h1>
-				testing hello <strong>{{ boldmessage }} </strong><br/>
+		<h1>Rango Hello ...<h1>
+				{% if category %}
+				<ul>
+				   {% for cate in category %}
+					 <li>{{ cate.name }}</li>
+					 {% endfor %}
+				</ul>
+					 {% else %}
+					 <strong> NO Error</strong>
+				{% endif %}
 				<a href="/rango/about/">About </a><br />
 				<img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
 	</body>
