@@ -44,7 +44,7 @@ def populate():
 
     add_page( cat=frome_cat,
             title="Flask",
-            url="http://flsk.pocoo.org"
+            url="http://flask.pocoo.org"
             )
 
     for c in Category.objects.all():

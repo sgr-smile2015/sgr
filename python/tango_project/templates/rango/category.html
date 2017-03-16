@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-<html>
 
+<html>
 	<head>
 		<title>Rango</title>
 	</head>
 
 	<body>
-		<h1>Rango Hello ...<h1>
-				{% if category %}
+	<h1>{{ category_name }}<h1>
+				{% if cate %}
+					{% if pages %}
 				<ul>
-				   {% for cate in category %}
-					 <li><a href="/rango/category/{{ cate.slug }}">{{ cate.name }}</a></li>
+				   {% for page in pages %}
+					 <li><a href="{{ page.url }}">{{ page.title }}</a></li>
 					 {% endfor %}
 				</ul>
 					 {% else %}
-					 <strong> NO Error</strong>
+					 <strong> NO Pages</strong>
+					 {% endif %}
+				{% else %}
+				The category {{ category_name }} does not exist! 
 				{% endif %}
 				<a href="/rango/about/">About </a><br />
 				<img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
