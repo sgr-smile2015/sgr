@@ -1,0 +1,27 @@
+=======ubuntu14.04迁移gitlab7.10.1======
+本文档主要描述迁移gitlab7.10.1版本，或升级
+该版本为8.12.1
+
+1.数据备份,在需要迁移的机器备份gitlab数据库 
+gitlab默认的数据放在/var/opt/gitlab/git-data/目录下
+备份命令: sudo gitlab-rake gitlab:backup:create
+执行后会在/var/opt/gitlab/backups/目录下生成一个类
+似1483726994_gitlab_backup.tar已时间戳开头的压缩文件
+
+2.新机器部署gitlab7.10.1版本,必须是迁移的同版本，直接
+用8.12.1会出现导入数据失败等各种原因，下载地址：
+https://packages.gitlab.com/gitlab/gitlab-ce/packages/ubuntu/trusty/gitlab-ce_7.10.1~omnibus.2-1_amd64.deb
+7.10.1版本并不支持Ubuntu16.04系统。在新部署的机器上使用
+sudo dpkg -i gitlab-ce_7.10.1-omnibus.2-1_amd64.deb 
+或者 curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+sudo apt-get install gitlab-ce=7.10.1~omnibus.2-1
+
+3.新机器导入数据，安装完gitlab后默认已经开启服务，如果需要
+修改配置，配置文件在/etc/gitlab
+导入数据命令: sudo gitlab-rake gitlab:backup:restore BACKUP=1483726994
+
+4.需要升级gitlab,在新机器下载好想要升级的版本，然后直接执行安装就好，
+gitlab会自动更新表结构，直接备份目录导入数据的时候会出现个人图标或者
+其他数据丢失的情况。
+
+=========以上已在Ubuntu14.04和16.04全部测试=====
