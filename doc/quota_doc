@@ -1,0 +1,39 @@
++++++++++Ubuntu16.04测试用户硬盘分配限制+++++++
+
+1.添加测试用户组:groupadd test 添加测试用户
+useradd -m -g test -s /bin/bash t1
+
+2.已/data为例，对应的/dev/sdb1,卸载umount /dev/sdb1
+修改/etc/fstab
+UUID=1bec5634-1a21-45fd-ac1c-de0058a3d59f /data  
+ext4  defaults,usrquota,grpquota   0   2 
+
+3.重新挂载/data, mount -a
+grep '/data' /etc/mtab
+显示quota硬盘写入fstab成功
+/dev/sdb1 /data ext4 rw,relatime,quota,usrquota,grpquota,data=ordered 0 0
+
+4.重新挂载 /data ,mounut -o remount /data
+扫描磁盘使用情况:quotacheck -avug 
+ll /data
+-rw-------  1 root root  6144 Mar 29 10:40 aquota.group
+-rw-------  1 root root  6144 Mar 29 10:40 aquota.user
+产生aquota.*文件表示成功
+
+5.启动quota硬盘限额
+quotaon -avug
+/dev/sdb1 [/data]: group quotas turned on
+/dev/sdb1 [/data]: user quotas turned on
+表示成功
+
+6.修改用户硬盘使用空间限制
+Filesystem                   blocks       soft       hard     inodes     soft     hard
+/dev/sdb1                     10240       5120      10240          4        0        0
+只能修改soft hard并且以KB为单位
+
+
+
+
+
+
+
