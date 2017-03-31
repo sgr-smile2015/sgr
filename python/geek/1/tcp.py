@@ -18,7 +18,7 @@ def check(banner):
     if 'Ubuntu-2ubuntu2.8' in banner:
         print "[*] is OK"
     elif 'SSH-2.0-OpenSSH_6.1p1 Debian-4' in banner:
-        print "[-] is Ok"
+        print "[+] is Ok"
     else:
         return
 
