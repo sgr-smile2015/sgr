@@ -1,0 +1,27 @@
+======ubuntu14.04使用virsh console vm=======
+1.在使用virsh console vm时出现以下错误
+连接到域 vm
+换码符为 ^]
+
+2.以上错误一直卡着登陆不了vm客户机
+
+3.解决方法
+登陆vm虚拟机,新建配置ttyS0.conf,添加如下内容
+# ttyS0 - getty
+#
+# This service maintains a getty on ttyS0 from the point the system is
+# started until it is shut down again.
+start on stopped rc RUNLEVEL=[2345]
+stop on runlevel [!2345]
+respawn
+exec /sbin/getty -L 38400 ttyS0 vt102
+
+4.写入grub
+
+$ sudo vi /etc/default/grub
+...
+GRUB_CMDLINE_LINUX_DEFAULT="console=ttyS0"
+...
+
+$ sudo update-grub2
++++++++++++++++++++++++++++++++++++++++++++++
