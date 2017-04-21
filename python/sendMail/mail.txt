@@ -1,0 +1,5 @@
+     * wmzy 客户端每日注册量统计分类
+
+分类		总数		前日
+{% for k in table_list %}
+{{ k.name }}		{{ k.value[0] }}		{{ k.value[1] }}{% endfor %}

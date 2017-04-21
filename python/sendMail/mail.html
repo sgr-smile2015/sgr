@@ -1,0 +1,54 @@
+  <div style="display:inline-block;">
+    <h1> wmzy 客户端付费用户统计</h1>
+  <!--  <table border="1" style="border-spacing:0;border-collapse:collapse;"> -->
+   <table border="1"> 
+      <tr>
+	<th> 分类 </th>
+	<th> 总数 </th>
+	<th> 新增 </th>
+      </tr>
+      {% for k in table_list %}
+      <tr>
+	<td>{{ k.name }}</td>
+	<td>{{ k.value[0] }}</td>
+	<td>{{ k.value[1] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <div style="display:inline-block;margin-left:30px;">
+    <h1> wmzy 客户端注册用户统计</h1>
+    <table border="1">
+      <tr>
+	<th> 分类 </th>
+	<th> 总数 </th>
+	<th> 新增 </th>
+      </tr>
+      {% for k in user_list %}
+      <tr>
+	<td>{{ k.name }}</td>
+	<td>{{ k.value[0] }}</td>
+	<td>{{ k.value[1] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <div style="display:inline-block;margin-left:30px;">
+    <h1> wmzy 实体卡用户统计</h1>
+    <table border="1">
+      <tr>
+	<th> 分类 </th>
+	<th> 总数 </th>
+	<th> 新增 </th>
+      </tr>
+      {% for k in card_list %}
+      <tr>
+	<td>{{ k.name }}</td>
+	<td>{{ k.value[0] }}</td>
+	<td>{{ k.value[1] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
