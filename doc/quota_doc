@@ -13,7 +13,7 @@ grep '/data' /etc/mtab
 显示quota硬盘写入fstab成功
 /dev/sdb1 /data ext4 rw,relatime,quota,usrquota,grpquota,data=ordered 0 0
 
-4.重新挂载 /data ,mounut -o remount /data
+4.重新挂载 /data ,mount -o remount /data
 扫描磁盘使用情况:quotacheck -avug 
 ll /data
 -rw-------  1 root root  6144 Mar 29 10:40 aquota.group
