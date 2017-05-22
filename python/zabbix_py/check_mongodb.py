@@ -41,7 +41,7 @@ def check_mongodb_connect():
 	else:
 		print "fuck"
 
-###start execute
+##start execute
 print sys.argv
 
 if sys.argv[1] == 'mongodb':
