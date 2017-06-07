@@ -1,0 +1,43 @@
+def DOCKER_NUM = 'sgr0.docker.com/test'
+def DOCKER_TAG = "${DOCKER_NUM}/pyweb:${BUILD_NUMBER}"
+node {
+
+   stage('拉取代码') { 
+      // for display purposes
+      // Get some code from a GitHub repository
+    echo 'git clone code'
+    git 'http://git@192.168.1.46/dev/test.git/'
+    }
+   
+   stage('构建镜像') {
+       // Get source code for gitlab
+       // build docker image
+      echo "docker build image ${DOCKER_NUM}/pyweb:${BUILD_NUMBER}"
+      def app = docker.build "${DOCKER_TAG}"
+      //app.push "${BUILD_NUMBER}"
+   
+   }
+   
+   stage('发布镜像') {
+      //mail to admin 
+      mail to: 'yangqihai@ipin.com',
+           subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER})等待测试",
+           body: "Please go to ${env.BUILD_URL}."
+       echo "发布镜像"
+       sh "sed -i 's@sgr0.docker.com/test/pybase:v1@${DOCKER_TAG}@g' docker-compose.yml"
+       sh "docker-compose up -d"
+   
+   }
+   
+   stage('测试') {
+    input message: '测试是否成功?', ok: '是'
+   
+   }
+   
+   stage ('清理文件') {
+       echo "clean docker images a weeks ago"
+      //deleteDir()
+   
+   }
+
+}
