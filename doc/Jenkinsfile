@@ -20,7 +20,7 @@ node {
    
    stage('发布镜像') {
       //mail to admin 
-      mail to: 'yangqihai@ipin.com',
+      mail to: 'admin@qq.com',
            subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER})等待测试",
            body: "Please go to ${env.BUILD_URL}."
        echo "发布镜像"
