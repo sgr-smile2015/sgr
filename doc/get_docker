@@ -7,7 +7,6 @@ sudo apt-get install -y --install-recommends linux-generic-lts-xenial
 sudo apt-get update
 sudo apt-get install apt-transport-https ca-certificates
 
-
 5.使用脚本下载(成功)
 sudo apt-get update 
 sudo apt-get install wget
