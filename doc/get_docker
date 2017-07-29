@@ -22,3 +22,11 @@ sudo usermod -aG docker ipin
 8.安装docker-compose
 sudo apt-get install python-pip
 sudo pip install docker-compose
+
+9.ubuntu16.04安装docker以后更新/etc/default/docker无效
+打开/lib/systemd/system/docker.service
+添加:
+EnvironmentFile=/etc/default/docker
+修改:
+ExecStart=/usr/bin/dockerd -H fd:// $DOCKER_OPTS
+
