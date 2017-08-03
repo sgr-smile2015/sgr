@@ -1,26 +1,31 @@
 #!groovy
-def DOCKER_NUM = 'sgr0.docker.com/test'
-def DOCKER_TAG = "${DOCKER_NUM}/pyweb:${GitTag}"
-//def DOCKER_TAG = "${DOCKER_NUM}/pyweb:${BUILD_NUMBER}"
+def DOCKER_NUM = 'sgr0.docker.com/wmzy'
+def SERVICE_NAME = 'open'
+def DOCKER_TAG = "${DOCKER_NUM}/${SERVICE_NAME}:${GitTag}"
+def mvnHome
 
 node {
 
    stage('拉取代码') {
-      // for display purposes
-      // Get some code from a GitHub repository
-    echo "git clone code tag is ${GitTag}"
-    //git 'http://yangqihai@192.168.1.46/dev/test.git/'
-    git  branch: 'fix',
-         credentialsId: '05928e2d-f169-423b-b8cc-716c83c80fa3',
-         url: 'git@192.168.1.46:dev/test.git',
-         tag: "${GitTag}"
-    sh "git checkout ${GitTag}"
+      // Get source code from a GitHub repository
+    	echo "git clone code tag is ${GitTag}"
+
+    	git  branch: 'master',
+    	     credentialsId: '90672896-e401-4f89-aa0b-bb96a203bd5a',
+    	     url: 'git@192.168.1.46:dev/edu_rest_open_api_service.git',
+    	     tag: "${GitTag}"
+    	sh "git checkout ${GitTag}"
     }
 
+   stage('编译代码') {
+     mvnHome = tool 'mvn'
+       // mvn install package
+      sh "${mvnHome}/bin/mvn clean package"
+   }
+
    stage('构建镜像') {
-       // Get source code for gitlab
        // build docker image
-       echo "docker build image ${DOCKER_NUM}/pyweb:${GitTag}"
+       echo "docker build image ${DOCKER_TAG}"
        def app = docker.build "${DOCKER_TAG}"
        app.push "${GitTag}"
    }
@@ -28,20 +33,20 @@ node {
    stage('发布镜像') {
       //mail to admin
       /***
-      mail to: 'yang@ipin.com',
+      mail to: 'yaniai@ipin.com',
            subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER})等待测试",
            body: "Please go to ${env.BUILD_URL}."
       ***/
-
-        echo "发布镜像"
-        sh "sed -i 's@sgr0.docker.com/test/pybase:.*@${DOCKER_TAG}@g' docker-compose.yml"
-        sh "cp docker-compose.yml /data/playbook/files/"
+	sh "scp ipin@192.168.1.62:/data/service/aliyun_wmzy/docker-compose.yml ."
+        sh "sed -i 's@sgr0.docker.com/wmzy/${SERVICE_NAME}:.*@${DOCKER_TAG}@g' docker-compose.yml"
+        sh "cp docker-compose.yml /data/playbook/files/local"
+        //sh "cp docker-compose.yml /data/playbook/files/"
 
         // copy docker-compose.yml to system and restart container
-        ansiblePlaybook installation: 'ansible1.5.4',
+        ansiblePlaybook installation: 'ansible',
                         inventory: '/data/playbook/hosts',
-                        playbook: '/data/playbook/copy_image.yml',
-                        extras: "--extra-vars host=${dev_server}",
+                        playbook: '/data/playbook/local.yml',
+                        extras: "--extra-vars 'host=${dev_server} service=${SERVICE_NAME}'",
                         sudoUser: null
    }
 
