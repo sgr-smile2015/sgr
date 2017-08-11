@@ -4,13 +4,19 @@ import groovy.io.FileType
 
 def list = []
 
-def dir = new File(".")
+def dir = new File("./work")
 
 dir.eachDir { dirs ->
 def text = dirs as String 
-println text.minus("./")
+//println text.minus("./work/")
+def obj = text.minus("./work/")
 //println file.isDirectory() ? "DIR: ${file}" : "FILE: ${file}"
-list << text.minus("./")
+def flag = obj =~ '.*@.*'
+if (!flag) {
+println 'hello ' + obj
+list << obj
+}
+
 }
 
 println list
