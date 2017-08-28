@@ -31,9 +31,3 @@ Filesystem                   blocks       soft       hard     inodes     soft   
 /dev/sdb1                     10240       5120      10240          4        0        0
 只能修改soft hard并且以KB为单位
 
-
-
-
-
-
-
