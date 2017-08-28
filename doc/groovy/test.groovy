@@ -13,9 +13,9 @@ def obj = text.minus("./work/")
 //println file.isDirectory() ? "DIR: ${file}" : "FILE: ${file}"
 def flag = obj =~ '.*@.*'
 if (!flag) {
-println 'hello ' + obj
-list << obj
-}
+	println 'hello ' + obj
+	list << obj
+	}
 
 }
 
