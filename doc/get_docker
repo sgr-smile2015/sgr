@@ -18,6 +18,7 @@ echo "DOCKER_OPTS=\"\$DOCKER_OPTS --registry-mirror=http://f2d6cb40.m.daocloud.i
 7.最新安装脚本(2017.5.6)
 sudo curl -sSL https://get.docker.com/ | sh
 sudo usermod -aG docker ipin
+exec su -l $USER
 
 8.安装docker-compose
 sudo apt-get install python-pip
