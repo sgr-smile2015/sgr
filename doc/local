@@ -20,3 +20,8 @@ cp bnx2-mips-09-6.2.1a.fw bnx2-mips-09-6.2.1b.fw
 修改Ubuntu默认编辑器
 echo export EDITOR=/usr/bin/vim >> ~/.bashrc
 source ~/.bashrc
+
+pip install mysql出现错误:
+发现没有找到mysql_config文件
+解决方法:
+sudo apt-get install libmysqld-dev
