@@ -1,5 +1,5 @@
 FROM node:7-alpine  
-LABEL maintainer "alpine@example.com"
+LABEL maintainer "alpine@163.com"
 
 ENV PROJECT_DIR=/app  
 WORKDIR $PROJECT_DIR
