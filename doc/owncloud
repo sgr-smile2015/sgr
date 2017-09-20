@@ -19,7 +19,6 @@ sudo dpkg -i mysql-apt-config_0.7.3-1_all.deb
 sudo apt-get update 
 sudo apt-get install mysql-server
 
-
 3.安装php7.0
 查看php加载情况
 php -r "phpinfo();" |grep Load
