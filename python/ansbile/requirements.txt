@@ -1,3 +1,5 @@
+-i https://pypi.tuna.tsinghua.edu.cn/simple
+
 Jinja2==2.8.1
 MarkupSafe==0.23
 PyYAML==3.12
