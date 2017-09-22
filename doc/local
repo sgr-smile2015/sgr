@@ -26,7 +26,7 @@ pip install mysql出现错误:
 解决方法:
 sudo apt-get install libmysqld-dev
 
-使用python3.4虚拟环境安装ansible出现错误:
+使用python3.4(virtualenv)虚拟环境安装ansible出现错误:
 Python.h: No such file or directory
 解决方案:
 sudo apt-get install python3-dev
