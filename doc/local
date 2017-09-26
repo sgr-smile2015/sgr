@@ -30,3 +30,15 @@ sudo apt-get install libmysqld-dev
 Python.h: No such file or directory
 解决方案:
 sudo apt-get install python3-dev
+
+使用logrotate切分系统日志,参考如下:
+/var/log/mongodb/*.log {
+       daily
+       dateext
+       rotate 10
+       copytruncate
+       delaycompress
+       compress
+       notifempty
+       missingok
+}
