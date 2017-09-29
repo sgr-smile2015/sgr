@@ -32,6 +32,8 @@ Python.h: No such file or directory
 sudo apt-get install python3-dev
 
 使用logrotate切分mongodb系统日志,参考如下:
+新建/etc/logrotate.d/mongodb-server文件,
+内容如下
 /var/log/mongodb/*.log {
        daily
        dateext
