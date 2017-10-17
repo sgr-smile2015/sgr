@@ -1,0 +1,44 @@
+1.提前安装apache2-php5模块
+sudo apt-get install libapache2-mod-php5
+
+2.安装ganglia
+sudo apt-get install ganglia-monitor rrdtool gmetad ganglia-webfrontend
+(在安装时会提示是否重启apache2服务,点击yes即可)
+
+3.前端apache2配置文件
+sudo cp /etc/ganglia-webfrontend/apache.conf /etc/apache2/conf-available/ganglia.conf
+启用配置
+sudo a2enconf ganglia
+
+4.后端gmetad配置文件
+修改/etc/ganglia/gmetad.conf
+data_source "ipin" 50 192.168.1.18:8649(修改成所需的ip加端口的形式,端口默认为8649)
+
+5.ganglia-monitor客户端配置
+修改/etc/ganglia/gmond.conf
+修改成如下类容:
+
+cluster {
+  name = "ipin" (对应gmetad.conf文件的data_source)
+  owner = "unspecified"
+  latlong = "unspecified"
+  url = "unspecified"
+}
+
+udp_send_channel {
+  host = 192.168.1.18 (对应服务器ip地址)
+  port = 8649
+  ttl = 1
+}
+
+udp_recv_channel {
+  port = 8649 (数据接收端口,对应gmetad.conf 192.168.1.18:8649)
+}
+
+重启所有相关服务:
+sudo service gmetad restart 
+sudo service ganglia-monitor restart 
+sudo service apache2 restart
+
+登陆192.168.1.18/ganglia/
+可以看到相关图形数据
