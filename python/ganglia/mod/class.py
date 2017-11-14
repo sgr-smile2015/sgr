@@ -12,7 +12,8 @@ log_seek = {}
 _Worker_Thread = None
 # synchronization lock
 _Lock = threading.Lock()
-next_pos = 0
+#记录访问日志文件的seek值
+next_pos = 0 
 
 
 def file_to_dic(source):
@@ -130,6 +131,7 @@ def metric_cleanup():
 if __name__ == '__main__':
     _conf = file_to_dic('config')
     for e in _conf:
+        #初始化seek值字典,每个app对应一个seek
         log_seek[e] = 0
 
     try:
