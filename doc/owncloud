@@ -10,7 +10,7 @@ sudo apt-get install mysql-server
 (安装MySQL失败，提示mysql-common错误)
 ====
 dpkg: 处理软件包 mysql-common (--configure)时出错：
- 子进程 已安装 post-installation 脚本 返回错误状态 2
+子进程 已安装 post-installation 脚本 返回错误状态 2
 ===
 
 解决办法：
