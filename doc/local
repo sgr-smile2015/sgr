@@ -44,3 +44,6 @@ sudo apt-get install python3-dev
        notifempty
        missingok
 }
+
+查看808端口,监听的话找出进程,并结束进程
+sudo netstat -tanp |grep 808 |awk '{print $NF}' |cut -d '/' -f 1 | sudo xargs kill -9
