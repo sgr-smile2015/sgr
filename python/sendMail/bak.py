@@ -44,8 +44,8 @@ def query_mongo(user_id):
 
 
 def query(table, condition, start, end, lable, other=''):
-    #conn = psycopg2.connect(database="wmzy",user="app_wmzy" , password="fseqP44QZfc6nci",host="192.168.1.45") 
-    conn = psycopg2.connect(database="wmzy", user="opsapp", password="tF6QiiMcxnJv6iYgG", host="10.27.113.186") 
+    #conn = psycopg2.connect(database="wmzy",user="app_wmzy" , password="abc",host="192.168.1.45") 
+    conn = psycopg2.connect(database="wmzy", user="opsapp", password="BgG", host="10.27.1.16") 
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     #cur = conn.cursor()
     cur.execute("select count(*) from %s where %s between %d and %d group by %s %s" % (table, condition, start, end, lable, other))
@@ -54,8 +54,8 @@ def query(table, condition, start, end, lable, other=''):
     return ret
 
 def query_pay(table, condition, start, end, lable):
-    #conn = psycopg2.connect(database="wmzy",user="app_wmzy" , password="fseqP44QZfc6nci",host="192.168.1.45") 
-    conn = psycopg2.connect(database="wmzy", user="opsapp", password="tF6QiiMcxnJv6iYgG", host="10.27.113.186") 
+    #conn = psycopg2.connect(database="wmzy",user="app_wmzy" , password="abc",host="192.168.1.45") 
+    conn = psycopg2.connect(database="wmzy", user="opsapp", password="BgG", host="10.27.1.16") 
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cur.execute("select user_id, order_time, order_type, buy_platform, buy_channel, \
                  coupon_code, pay_count \
@@ -65,8 +65,8 @@ def query_pay(table, condition, start, end, lable):
     return ret
 
 def query_user(table, condition, user_id):
-    #conn = psycopg2.connect(database="wmzy",user="app_wmzy" , password="fse6nci",host="192.168.1.45") 
-    conn = psycopg2.connect(database="wmzy", user="opsapp", password="BgG", host="10.27.113.186")
+    #conn = psycopg2.connect(database="wmzy",user="app_wmzy" , password="abc",host="192.168.1.45") 
+    conn = psycopg2.connect(database="wmzy", user="opsapp", password="BgG", host="10.27.1.16")
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cur.execute("select register_platform, register_channel, \
                  bound_trial_card, ts_create, status \
