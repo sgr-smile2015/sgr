@@ -11,7 +11,7 @@ import time
 current_time=time.strftime('%Y-%m-%d %H:%M',time.localtime(time.time()))
   
 mail_host ='smtp.exmail.qq.com'
-mail_user ='yangxx00@ipin.com'
+mail_user ='yangxx00@163.com'
 mail_pwd = 'xxo02016'
   
 def send_email( content,mailto, get_sub ):
