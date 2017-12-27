@@ -1,0 +1,23 @@
+---
+
+- name: Ensure user is present
+  become: yes
+  user:
+    name: "{{ item }}"
+    shell: /bin/bash
+    state: present
+    groups: ipin
+    #append: yes
+    #skeleton: yes
+    home: /home/{{ item }}
+  with_items: "{{ user_name }}"
+  notify: add public key
+#  register: log_create
+#- debug: var=log_create
+
+- name: sudo command authorize
+  lineinfile:
+    dest: /etc/sudoers
+    backup: yes
+    line: '{{ user_name }} ALL=(ALL:ALL) NOPASSWD:ALL'
+  when: sudo_flag == "yes"

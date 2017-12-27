@@ -1,0 +1,10 @@
+---
+
+- name: add public key
+  become: yes
+  authorized_key:
+    user: "{{ item }}"
+    state: present
+    key: "{{ lookup('file', 'files/{{ item }}') }}"
+  with_items:
+    - "{{ user_name }}"
