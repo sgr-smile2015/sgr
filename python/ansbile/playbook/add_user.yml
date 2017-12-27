@@ -1,0 +1,17 @@
+---
+
+- name: adding user to server
+  gather_facts: false
+  hosts: dev29 
+  remote_user: ipin
+  vars_prompt:
+    - name: "user_name"
+      prompt: "输入创建的用户名"
+      private: false
+
+    - name: "sudo_flag"
+      prompt: "用户sudo权限"
+      default: "yes/no"
+      private: false
+  roles:
+    - { role: add_user }

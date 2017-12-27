@@ -6,7 +6,7 @@
     name: "{{ item }}"
     shell: /bin/bash
     state: present
-    groups: ipin
+    groups: dev
     #append: yes
     #skeleton: yes
     home: /home/{{ item }}
