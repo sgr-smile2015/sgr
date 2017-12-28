@@ -1,0 +1,6 @@
+---
+
+uninstall_previous_docker_versions: false
+
+#DOCKER_OPTS
+docker_opts: "--registry-mirror=https://ep00y02z.mirror.aliyuncs.com"

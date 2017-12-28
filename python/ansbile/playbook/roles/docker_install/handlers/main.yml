@@ -1,0 +1,9 @@
+---
+
+- name: delete scripts
+  file:
+    path: /tmp/install_docker.sh
+    state: absent
+
+- name: restart docker
+  service: name=docker state=restarted

@@ -1,0 +1,51 @@
+---
+
+- name: Uninstall old versions of Docker
+  apt:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - docker
+    - docker-engine
+    - docker.io
+  when: uninstall_previous_docker_versions
+
+- name: Install net LTS kernel for Docker
+  apt:
+    name: linux-generic-lts-xenial
+    state: present
+  when: uninstall_previous_docker_versions
+
+- name: Install curl package of Docker
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+
+- name: Download docker scripts
+  copy:
+    src: files/install.sh
+    dest: /tmp/install_docker.sh
+    owner: ipin
+    mode: 0755
+
+- name: sh /tmp/install_docker.sh scripts
+  command: sh /tmp/install_docker.sh
+  notify: delete scripts
+
+- name: Add user to docker groups
+  user:
+    name: ipin
+    # default is no, set yes increment groups
+    append: yes
+    groups: docker
+
+- name: Add DOCKER_OPTS in /etc/defalut/docker
+  lineinfile:
+    path: /etc/default/docker
+    line: "DOCKER_OPTS='{{ docker_opts }}'"
+  notify: restart docker
+
