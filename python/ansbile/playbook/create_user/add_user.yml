@@ -14,4 +14,4 @@
       default: "yes/no"
       private: false
   roles:
-    - { role: add_user }
+    - { role: ../roles/add_user }
