@@ -49,3 +49,7 @@
     line: "DOCKER_OPTS='{{ docker_opts }}'"
   notify: restart docker
 
+- name: Install docker-composer package
+  pip:
+    name: docker-compose
+    state: present
