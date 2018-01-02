@@ -1,0 +1,12 @@
+
+git 创建分支
+git checkout -b fix
+git 回退commit
+git revert 03cd45
+
+git 创建tag
+git tag v0.0.1
+git 切换tag
+git checkout v0.0.1
+
+
