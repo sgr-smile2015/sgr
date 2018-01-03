@@ -3,6 +3,8 @@ git 创建分支
 git checkout -b fix
 git 回退commit
 git revert 03cd45
+git 合并分支(需切换到master分支)
+git merge fix
 
 git 创建tag
 git tag v0.0.1
