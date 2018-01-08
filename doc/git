@@ -10,5 +10,6 @@ git 创建tag
 git tag v0.0.1
 git 切换tag
 git checkout v0.0.1
-
+git 暂存提交
+git stash
 
