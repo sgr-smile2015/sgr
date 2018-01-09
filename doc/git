@@ -13,3 +13,5 @@ git checkout v0.0.1
 git 暂存提交
 git stash
 
+git 退回到上个版本
+git reset --hard HEAD^
