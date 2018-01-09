@@ -50,3 +50,10 @@ sudo netstat -tanp |grep 808 |awk '{print $NF}' |cut -d '/' -f 1 | sudo xargs ki
 
 查看808端口的所有进程,其中NR表示行
 sudo lsof -i:808 | awk 'NR>2{print $2}'
+
+右上角不显示时间: 可能的的原因是indicator-datetime被误删
+解决方法:
+重新安装indicator-datetime 
+sudo apt-get install indicator-datetime
+sudo dpkg-reconfigure --frontend noninteractive tzdata
+重启unity: sudo killall unity-panel-service
