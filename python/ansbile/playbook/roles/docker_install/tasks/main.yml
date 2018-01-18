@@ -24,6 +24,7 @@
     - apt-transport-https
     - ca-certificates
     - curl
+    - python-pip
 
 - name: Download docker scripts
   copy:
