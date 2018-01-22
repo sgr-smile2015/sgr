@@ -33,9 +33,10 @@
     owner: sgr
     mode: 0755
 
-- name: sh /tmp/install_docker.sh scripts
-  command: sh /tmp/install_docker.sh
-  notify: delete scripts
+- name: Install docker.deb package 
+  apt: 
+    deb: /tmp/package.deb
+  notify: delete package
 
 - name: Add user to docker groups
   user:
