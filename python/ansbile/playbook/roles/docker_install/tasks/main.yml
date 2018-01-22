@@ -26,10 +26,10 @@
     - curl
     - python-pip
 
-- name: Download docker scripts
+- name: Copy docker package to server
   copy:
-    src: files/install.sh
-    dest: /tmp/install_docker.sh
+    src: files/package.deb
+    dest: /tmp/package.deb
     owner: sgr
     mode: 0755
 
