@@ -1,8 +1,8 @@
 ---
 
-- name: delete scripts
+- name: delete package
   file:
-    path: /tmp/install_docker.sh
+    path: /tmp/package.deb
     state: absent
 
 - name: restart docker
