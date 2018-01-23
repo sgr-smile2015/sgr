@@ -16,4 +16,11 @@ virtualenv env 创建虚拟环境env
 5.重新激活 
 source ./bin/activate
 
+18/1/21
+通过apt下载最新ansible发布版本
+sudo apt-get install software-properties-common
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install ansible
+
 ++++++++++++++
