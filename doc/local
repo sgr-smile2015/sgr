@@ -57,3 +57,7 @@ sudo lsof -i:808 | awk 'NR>2{print $2}'
 sudo apt-get install indicator-datetime
 sudo dpkg-reconfigure --frontend noninteractive tzdata
 重启unity: sudo killall unity-panel-service
+
+linux上关闭用户连接:
+1. fuser -k /dev/pts/2
+2. pkill -kill -t pts/2
