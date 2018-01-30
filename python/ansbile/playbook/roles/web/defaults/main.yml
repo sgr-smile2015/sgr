@@ -1,0 +1,24 @@
+---
+
+web_pro: [
+#'ads.wmzy.com',
+#'app.linkto.com',
+#'ceping.wmzy.com',
+'mobile.wmzy.com',
+'m.wmzy.com',
+'open2.wmzy.com',
+'www.wmzy.com',
+#'yn1on1.wmzy.com',
+#'agent.wmzy.com',
+#'bbs.wmzy.com',
+#'m.linkto.com',
+#'mock.wmzy.com',
+#'news.wmzy.com',
+#'restapi.wmzy.com',
+#'ynspt.wmzy.com'
+]
+
+cache_flag: true
+
+update_link: false
+

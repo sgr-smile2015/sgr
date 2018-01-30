@@ -1,0 +1,72 @@
+---
+
+- name: Copy certs to /etc/nginx
+  copy:
+    src: files/certs
+    dest: /etc/nginx
+    owner: root
+    group: root
+    mode: 0400
+
+- name: Change cert dirctory owner
+  file:
+    path: /etc/nginx/certs
+    mode: 0400
+
+- name: Copy web project config file to /etc/nginx/sites-available
+  copy:
+    src: files/sites-available/
+    dest: /etc/nginx/sites-available
+    owner: root
+    mode: 0644
+  #notify: reload nginx
+
+- name: Find link file in /etc/nginx/sites-enabled
+  command: ls /etc/nginx/sites_enabled/
+  register: ln
+
+- name: Update link file in /etc/nginx/sites-enabled
+  file:
+    path: /tmp/link/{{ item }}
+    state: absent
+  with_items:
+    - "{{ ln.stdout_lines }}"
+  when: update_link
+
+- name: Create nginx log directory
+  file:
+    path: /mnt/logs/nginx/{{ item }}
+    state: directory
+    owner: root
+    mode: 0755
+  with_items:
+    - "{{ web_pro }}"
+
+- name: Link config to /etc/nginx/sites-enabled
+  file:
+    src: /etc/nginx/sites-available/{{ item }}
+    dest: /etc/nginx/sites-enabled/{{ item }}
+    state: link
+  with_items:
+    - "{{ web_pro }}"
+  notify: reload nginx
+  when: cache_flag
+  register: ss
+
+- name: Create log cache dircetory
+  file:
+    path: /data/cache/nginx/{{ item }}
+    state: directory
+    owner: root
+    mode: 0755
+  with_items:
+    - "{{ web_pro }}"
+  when: cache_flag
+
+- name: Copy conf.d dirctory to /etc/nginx/conf.d
+  copy:
+    src: files/conf.d/
+    dest: /etc/nginx/conf.d
+    owner: root
+    mode: 0644
+  notify: reload nginx
