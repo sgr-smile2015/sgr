@@ -1,0 +1,8 @@
+User_Alias ADMIN = {{ admins|join(", ") }}
+User_Alias DEV = {{ devloper|join(", ") }}
+
+IPIN  ALL=(ALL:dev) NOPASSWD:/bin/su - dev, /bin/su dev
+ADMIN ALL=(ALL:ALL) NOPASSWD:/bin/su - admin, /bin/su - admin
+
+admin    ALL=(ALL:ALL) NOPASSWD:ALL
+dev ALL=(ALL) NOEXEC:/bin/su, NOPASSWD:/usr/bin/docker

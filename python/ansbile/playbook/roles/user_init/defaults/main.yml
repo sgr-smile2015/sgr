@@ -1,0 +1,9 @@
+---
+
+admins: ['admin', 'sgr']
+dbas: ['ops']
+devloper: ['dev']
+
+unit: ['admin', 'dba', 'devloper']
+
+test_flay: false

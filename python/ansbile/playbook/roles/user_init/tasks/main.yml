@@ -1,0 +1,78 @@
+---
+
+- name: Ensure all groups is present
+  group:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ unit }}"
+
+#admin groups
+- name: Ensure admins is present
+  user:
+    name: "{{ item }}"
+    shell: /bin/bash
+    state: present
+    groups: root
+    createhome: yes
+  with_items:
+    - "{{ admins }}"
+  notify: add public key
+
+#dba groups
+- name: Ensure dbas is present
+  user:
+    name: "{{ item }}"
+    shell: /bin/bash
+    state: present
+    groups: dba
+    createhome: yes
+  with_items:
+    - "{{ dbas }}"
+  notify: add public key
+#  register: log_create
+#- debug: var=log_create
+
+- name: Ensure devloper is present
+  user:
+    name: "{{ item }}"
+    shell: /bin/bash
+    state: present
+    groups: dev
+    createhome: yes
+  with_items:
+    - "{{ devloper }}"
+  notify: add public key
+#  register: log_create
+
+- name: sudo command authorize
+  template:
+    src: templates/admin.sudo
+    dest: /etc/sudoers.d/admin
+    validate: '/usr/sbin/visudo -cf %s'
+
+- name: Ensure .ssh is exists
+  command: ls /home/{{ item }}/.ssh
+  with_items:
+    - "{{ admins }}"
+    - "{{ dbas }}"
+    - "{{ devloper }}"
+  #ignore_errors: True
+  register: st
+  notify: add public key
+  failed_when: " 'faild' in st.stdout"
+#- debug: var=st
+
+- name: Change dirctory owner
+  file:
+    path: /home/{{ item }}
+    state: directory
+    mode: 0700
+  with_items:
+    - "{{ admins }}"
+
+- name: Ensue public keys is exists
+  command: echo 'hello' > /dev/null
+  notify: add public key
+  when: test_flay == true
+
