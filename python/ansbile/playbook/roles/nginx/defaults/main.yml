@@ -1,0 +1,7 @@
+---
+
+copy_flag: true
+
+update_flag: false
+
+n_default: ['sites-available', 'sites-enabled']

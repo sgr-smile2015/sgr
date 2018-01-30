@@ -1,0 +1,14 @@
+---
+
+- name: restart nginx
+  service: name=nginx state=restarted
+
+- name: reload nginx
+  service: name=nginx state=reloaded
+
+- name: clear config
+  file:
+    path: /etc/nginx/{{ item }}/default
+    state: absent
+  with_items:
+    - "{{ n_default }}"

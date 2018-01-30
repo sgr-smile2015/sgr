@@ -1,0 +1,24 @@
+---
+
+- name: Add nginx repository in ppa
+  apt_repository:
+    repo: 'ppa:nginx/stable'
+    update_cache: yes
+  when: update_flag
+
+- name: Install stable nginx version
+  apt:
+    update_cache: yes
+    name: nginx
+    state: latest
+
+- name: Copy nginx.conf to /etc/nginx
+  copy:
+    src: files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    mode: 0644
+  when: copy_flag
+  notify:
+    - clear config
+    - reload nginx
