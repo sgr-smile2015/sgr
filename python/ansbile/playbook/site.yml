@@ -1,0 +1,12 @@
+---
+
+- name: Start playbooke ...
+  gather_facts: false
+  hosts: dev27 
+  remote_user: sgr
+  roles:
+    - role: user_init
+    - role: docker_install
+    - role: nginx
+    - role: web
+

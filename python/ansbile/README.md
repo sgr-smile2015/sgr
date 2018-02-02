@@ -13,7 +13,7 @@ pip install -r requirements.txt
 virtualenv env 创建虚拟环境env
 退出虚拟环境  deactivate
 
-5.重新激活 
+5.重新激活
 source ./bin/activate
 
 18/1/21
