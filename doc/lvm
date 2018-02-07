@@ -1,0 +1,18 @@
+pvcreate /dev/sdc1
+vgcreate vg /dev/sdc1
+vgs
+lvcreate -L 3.64t -n lv vg
+lvs
+pvdisplay
+lvcreate -l 100%FREE -n lv vg
+lsblk
+mkfs.ext4 /dev/vg/lv
+
+vgextend vg /dev/sda1
+lvs
+vgdisplay
+lvextend -l 238467 /dev/vg/lv
+vgs
+lvextend -l +238467 /dev/vg/lv
+resize2fs /dev/vg/lv
+
