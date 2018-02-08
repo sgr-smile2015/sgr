@@ -61,3 +61,7 @@ sudo dpkg-reconfigure --frontend noninteractive tzdata
 linux上关闭用户连接:
 1. fuser -k /dev/pts/2
 2. pkill -kill -t pts/2
+
+ubuntu查看硬盘编号
+lshw -c disk
+
