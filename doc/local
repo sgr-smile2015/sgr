@@ -64,4 +64,4 @@ linux上关闭用户连接:
 
 ubuntu查看硬盘编号
 lshw -c disk
-
+cat /sys/block/sdb/device/model
