@@ -65,3 +65,9 @@ linux上关闭用户连接:
 ubuntu查看硬盘编号
 lshw -c disk
 cat /sys/block/sdb/device/model
+
+python3.6运行django出现错误
+No module named '_sqlite3'
+解决方法:
+sudo apt-get install libsqlite3-dev
+
