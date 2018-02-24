@@ -83,3 +83,12 @@ set fillchars+=stl:\ ,stlnc:\
 "set termencoding=utf-8
 "set background=dark
 "set background=light
+
+autocmd BufNewFile *.py :call AddTitle()
+function AddTitle()
+	call append(0,"#!/usr/bin/env python")
+	call append(1,"# -*- coding: utf-8 -*-")
+	call append(2,"# Copyright © Sgr")
+	call append(3,"# CreateTime: ".strftime("%Y-%m-%d %H:%M:%S"))
+	call append(4,"")
+endf
