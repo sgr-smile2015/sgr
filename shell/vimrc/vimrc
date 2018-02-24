@@ -84,11 +84,21 @@ set fillchars+=stl:\ ,stlnc:\
 "set background=dark
 "set background=light
 
-autocmd BufNewFile *.py :call AddTitle()
-function AddTitle()
+autocmd BufNewFile *.py :call AddPython()
+function AddPython()
 	call append(0,"#!/usr/bin/env python")
 	call append(1,"# -*- coding: utf-8 -*-")
 	call append(2,"# Copyright © Sgr")
 	call append(3,"# CreateTime: ".strftime("%Y-%m-%d %H:%M:%S"))
+	call append(4,"")
+endf
+
+"shell scripts include 
+autocmd BufNewFile *.sh :call AddBash()
+function AddBash()
+	call append(0,"#!/bin/bash")
+	call append(1,"# Copyright © Sgr")
+	call append(2,"# CreateTime: ".strftime("%Y-%m-%d %H:%M:%S"))
+	call append(3,"set -x")
 	call append(4,"")
 endf
