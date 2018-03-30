@@ -72,3 +72,8 @@ No module named '_sqlite3'
 sudo apt-get install libsqlite3-dev
 (然后使用源码重新安装python3.6)
 
+
+使用iptables,让192.172.0.2 9001端口转发192.172.0.3:9001(内网ip) 13.6.10.13(外网ip)
+iptables -t nat -A PREROUTING -p tcp -d 13.6.10.13 --dport 9001 -j DNAT --to-destination 192.172.0.3:9001
+iptables -t nat -A POSTROUTING -p tcp -d 192.172.0.3 --dport 9001 -j SNAT --to-source 192.172.0.2
+
