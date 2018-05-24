@@ -1,3 +1,4 @@
 PATH=/home/ipin/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 @reboot mkdaemon -r crazyproxy -Cb www.55boom.net:3400 :8800 >> ~/log 2>&1
+*/5 * * * * (cd /home/sgr/git/k8s; python clear_log.py >> run.log 2>&1)
