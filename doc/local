@@ -97,5 +97,7 @@ sublime text 3 注册码过期问题
 127.0.0.1 45.55.255.55
 127.0.0.1 45.55.41.223
 
-ldap配置memberof filter:
+ldap配置memberof filter(harbor):
 "ldap_filter": "(objectclass=inetorgperson)(memberof=cn=dev,ou=groups,dc=it,dc=com)"
+gitlab:
+user_filter: '(memberOf=cn=dev,ou=groups,dc=ipin,dc=com)'
