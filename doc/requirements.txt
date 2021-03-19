@@ -1,6 +1,6 @@
 -i https://pypi.tuna.tsinghua.edu.cn/simple
 
-Jinja2==2.8.1
+Jinja2==2.11.3
 MarkupSafe==0.23
 PyYAML==3.12
 ansible==2.2.1.0
