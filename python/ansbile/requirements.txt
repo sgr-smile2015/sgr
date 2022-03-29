@@ -7,7 +7,7 @@ ansible==2.2.1.0
 appdirs==1.4.2
 argparse==1.2.1
 packaging==16.8
-paramiko==2.1.2
+paramiko==2.10.1
 pycrypto==2.6.1
 pyparsing==2.1.10
 six==1.10.0
